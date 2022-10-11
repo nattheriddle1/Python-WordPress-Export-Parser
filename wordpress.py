@@ -75,3 +75,8 @@ class DateTimeField(Field):
 
     def transform(self, value):
         return datetime.strptime(value, self._format)
+
+
+class Model:
+    def __init__(self, tree):
+        self._tree = tree
