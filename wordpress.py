@@ -41,3 +41,8 @@ class Field:
 
 class TextField(Field):
     pass
+
+
+class IntegerField(Field):
+    def transform(self, value):
+        return int(value)
