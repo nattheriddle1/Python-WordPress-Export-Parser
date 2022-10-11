@@ -102,3 +102,9 @@ class Category(Model):
     name = TextField(key=":cat_name")
     slug = TextField(key="_nicename")
     description = TextField()
+
+
+class Tag(Model):
+    id = IntegerField(key=":term_id")
+    name = TextField()
+    slug = TextField()
