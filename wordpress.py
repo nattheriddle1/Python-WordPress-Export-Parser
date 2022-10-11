@@ -104,6 +104,25 @@ class Instance(BaseInstance):
         return obj._tree.find(self._key, NAMESPACES)
 
 
+class Instances(BaseInstance):
+    def __init__(self, key="", to=None, map=list):
+        self._key = key
+        self._to = to
+        self._map = map
+        self._active = False
+
+    def __get__(self, obj, klass):
+        if not obj:
+            return self
+        if not self._active:
+            self._models = self._map(
+                self._to(element)
+                for element in
+                obj._tree.findall(self._key, NAMESPACES)
+            )
+        return self._models
+
+
 class Meta(Model):
     key = TextField()
     value = TextField()
