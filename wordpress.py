@@ -46,3 +46,16 @@ class TextField(Field):
 class IntegerField(Field):
     def transform(self, value):
         return int(value)
+
+
+class BooleanField(Field):
+    def __init__(self, key="", true={}, false={}):
+        super().__init__(key)
+        self._true = true
+        self._false = false
+
+    def transform(self, value):
+        if value in self._true:
+            return True
+        elif value in self._false:
+            return False
