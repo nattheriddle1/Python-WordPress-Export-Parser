@@ -127,3 +127,29 @@ class Comment(Model):
     content = TextField()
     approved = BooleanField(true={"1"}, false={"0"})
     type = TextField()
+
+
+class Post(Model):
+    id = IntegerField()
+    title = TextField(key="title")
+    name = TextField()
+    link = TextField(key="link")
+    date = DateTimeField(key="pubDate", format=DATETIME_FORMATS["rss"])
+    description = TextField(key="description")
+    content = TextField(key="content:encoded")
+    excerpt = TextField(key="excerpt:encoded")
+    can_comment = BooleanField(
+        key=":comment_status",
+        true={"open"}, false={"closed"}
+    )
+    can_ping = BooleanField(
+        key=":ping_status",
+        true={"open"}, false={"closed"}
+    )
+    status = TextField(key=":status")
+    type = TextField()
+    menu_order = IntegerField(key=":menu_order")
+    is_sticky = BooleanField(
+        key=":is_sticky",
+        true={"0"}, false={"1"}
+    )
