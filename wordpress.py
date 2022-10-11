@@ -83,6 +83,14 @@ class Model:
         self._tree = tree
 
 
+class BaseInstance:
+    def __set_name__(self, klass, name):
+        if not self._key:
+            self._key = ":" + self._to.__name__.lower()
+        if self._key.startswith(":"):
+            self._key = "wp" + self._key
+
+
 class Meta(Model):
     key = TextField()
     value = TextField()
