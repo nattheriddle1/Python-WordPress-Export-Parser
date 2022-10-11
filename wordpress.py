@@ -1,3 +1,10 @@
+from datetime import datetime
+
+DATETIME_FORMATS = {
+    "rss": r"%a, %d %b %Y %H:%M:%S %z",
+    "wp": r"%Y-%m-%d %H:%M:%S",
+}
+
 NAMESPACES = {
     "excerpt": "http://wordpress.org/export/1.2/excerpt/",
     "content": "http://purl.org/rss/1.0/modules/content/",
@@ -59,3 +66,12 @@ class BooleanField(Field):
             return True
         elif value in self._false:
             return False
+
+
+class DateTimeField(Field):
+    def __init__(self, key="", format=DATETIME_FORMATS["wp"]):
+        super().__init__(key)
+        self._format = format
+
+    def transform(self, value):
+        return datetime.strptime(value, self._format)
