@@ -108,3 +108,10 @@ class Tag(Model):
     id = IntegerField(key=":term_id")
     name = TextField()
     slug = TextField()
+
+
+class Term(Model):
+    id = IntegerField(key=":term_id")
+    name = TextField()
+    slug = TextField()
+    taxonomy = TextField()
