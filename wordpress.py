@@ -91,6 +91,19 @@ class BaseInstance:
             self._key = "wp" + self._key
 
 
+class Instance(BaseInstance):
+    def __init__(self, key="", to=None, map=list):
+        self._key = key
+        self._to = to
+        self._map = map
+        self._active = False
+
+    def __get__(self, obj, klass):
+        if not obj:
+            return self
+        return obj._tree.find(self._key, NAMESPACES)
+
+
 class Meta(Model):
     key = TextField()
     value = TextField()
