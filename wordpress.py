@@ -95,3 +95,10 @@ class Author(Model):
     name = TextField(key="_display_name")
     first_name = TextField()
     last_name = TextField()
+
+
+class Category(Model):
+    id = IntegerField(key=":term_id")
+    name = TextField(key=":cat_name")
+    slug = TextField(key="_nicename")
+    description = TextField()
