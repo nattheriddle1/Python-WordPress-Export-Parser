@@ -155,6 +155,10 @@ class Term(Model):
     name = TextField()
     slug = TextField()
     taxonomy = TextField()
+    metas = Instances(
+        to=Meta, key=":termmeta",
+        map=lambda models: {model.key: model.value for model in models}
+    )
 
 
 class Comment(Model):
