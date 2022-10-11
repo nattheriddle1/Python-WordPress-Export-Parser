@@ -86,3 +86,12 @@ class Model:
 class Meta(Model):
     key = TextField()
     value = TextField()
+
+
+class Author(Model):
+    id = IntegerField()
+    username = TextField(key="_login")
+    email = TextField()
+    name = TextField(key="_display_name")
+    first_name = TextField()
+    last_name = TextField()
