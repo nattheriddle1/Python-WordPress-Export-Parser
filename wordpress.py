@@ -161,3 +161,17 @@ class Image(Model):
     link = TextField(key="link")
     width = IntegerField(key="width")
     height = IntegerField(key="height")
+
+
+class WordPress(Model):
+    id = IntegerField(key="site")
+    title = TextField(key="title")
+    link = TextField(key="link")
+    description = TextField(key="description")
+    date = DateTimeField(key="pubDate", format=DATETIME_FORMATS["rss"])
+    language = TextField(key="language")
+    version = TextField(key="generator")
+
+    def __init__(self, path):
+        tree = ElementTree.parse(path).getroot().find("channel")
+        super().__init__(tree)
