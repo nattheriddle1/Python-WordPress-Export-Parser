@@ -115,3 +115,15 @@ class Term(Model):
     name = TextField()
     slug = TextField()
     taxonomy = TextField()
+
+
+class Comment(Model):
+    id = TextField()
+    author = TextField()
+    author_email = TextField()
+    author_url = TextField()
+    author_IP = TextField()
+    date = DateTimeField()
+    content = TextField()
+    approved = BooleanField(true={"1"}, false={"0"})
+    type = TextField()
