@@ -1,4 +1,5 @@
 from datetime import datetime
+from xml.etree import ElementTree
 
 DATETIME_FORMATS = {
     "rss": r"%a, %d %b %Y %H:%M:%S %z",
@@ -80,3 +81,8 @@ class DateTimeField(Field):
 class Model:
     def __init__(self, tree):
         self._tree = tree
+
+
+class Meta(Model):
+    key = TextField()
+    value = TextField()
