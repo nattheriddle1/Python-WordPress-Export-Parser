@@ -197,6 +197,11 @@ class Post(Model):
         key=":is_sticky",
         true={"0"}, false={"1"}
     )
+    comments = Instances(to=Comment)
+    metas = Instances(
+        to=Meta, key=":postmeta",
+        map=lambda models: {model.key: model.value for model in models}
+    )
 
 
 class Image(Model):
