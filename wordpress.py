@@ -153,3 +153,11 @@ class Post(Model):
         key=":is_sticky",
         true={"0"}, false={"1"}
     )
+
+
+class Image(Model):
+    title = TextField(key="title")
+    url = TextField(key="url")
+    link = TextField(key="link")
+    width = IntegerField(key="width")
+    height = IntegerField(key="height")
