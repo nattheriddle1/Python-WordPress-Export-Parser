@@ -37,3 +37,7 @@ class Field:
 
     def transform(self, value):
         return value
+
+
+class TextField(Field):
+    pass
