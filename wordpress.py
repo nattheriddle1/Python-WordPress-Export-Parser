@@ -220,6 +220,12 @@ class WordPress(Model):
     date = DateTimeField(key="pubDate", format=DATETIME_FORMATS["rss"])
     language = TextField(key="language")
     version = TextField(key="generator")
+    image = Instance(to=Image)
+    authors = Instances(to=Author)
+    categories = Instances(to=Category)
+    tags = Instances(to=Tag)
+    terms = Instances(to=Term)
+    posts = Instances(to=Post, key="item")
 
     def __init__(self, path):
         tree = ElementTree.parse(path).getroot().find("channel")
